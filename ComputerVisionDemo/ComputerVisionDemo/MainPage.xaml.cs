@@ -43,16 +43,17 @@ namespace ComputerVisionDemo
             Plugin.Media.Abstractions.StoreCameraMediaOptions options = new Plugin.Media.Abstractions.StoreCameraMediaOptions();
 
             var image = await CrossMedia.Current.TakePhotoAsync(options);
-            Image.Source = ImageSource.FromStream(() =>
-            {
-                return image.GetStream();
-            });
+           
+            // Image.Source = ImageSource.FromStream(() =>
+            // {
+            //     return image.GetStream();
+            // });
+
+            Image.Source=image.Path;
 
             ResultStack.IsVisible = true;
 
             MakeAnalysisRequest(image.Path);
-
-
 
         }
 
